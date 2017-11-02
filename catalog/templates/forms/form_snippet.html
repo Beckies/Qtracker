@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}
+{% include 'snippets/form-snippet.html' %}
+{% block content %}
+  <h2 align="center">{{ title }}</h2>
+  	<div class="table-responsive"> 
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>SN</th>
+              <th>Organization</th>
+              <th>Services</th>
+              <th>Website</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          {% for obj in object_list %}  
+          <tbody>
+            <tr>  
+              <td>{{ forloop.counter }}</td>
+              <td><a href="">{{ obj.org_name.upper }}</a></td>
+              <td width="300px">{{ obj.service }}</td>
+              <td><a href="{{ organization.website}}">{{ obj.website}}</a></td>
+              <td width="300px">{{ obj.address }}</td>
+              <td><a href=""> ADD </a>|<a> EDIT </a>|<a> DELETE </a></td>
+            </tr>
+          </tbody>
+        {% endfor %}
+      </table>
+      </div>
+  {% endblock %}

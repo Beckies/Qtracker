@@ -1,0 +1,39 @@
+{% extends 'base_generic.html' %}
+{% block title %} <div class="text-navy">Organization</div> {% endblock %}     
+<!-- box-header -->
+<div class="row">
+  <div class="col-md-12">
+  {% block message %}{% endblock %}
+    {% block link %} <div class="pull-right"><button class="btn bg-blue-active show-form" data-url={% url 'org_create' %}><i class="fa fa-plus"> </i> New Organization</button></div>{% endblock %}
+   {% block content %}
+    <!-- box-body -->
+      <table class="table table-hover" id="org-table" align="center">
+        <thead>
+          <tr class="bg-blue-gradient">
+            <th>SN</th>
+            <th>Organization</th>
+            <th>Website</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead> 
+        <tbody class="bg-warning text-white" id="org-table">
+           {% include 'catalog/organization_list_update.html' %}
+        </tbody>
+      </table>
+  <!-- /.box-body -->
+</div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="modal-org">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

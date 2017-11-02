@@ -1,0 +1,50 @@
+{% extends 'base_generic.html' %}
+{% block title %} <div class="text-navy">ITEMS</div> {% endblock %}     
+<!-- box-header -->
+<div class="row">
+  <div class="col-md-12">
+    {% block link %} <div class="pull-right"><button class="btn bg-green-gradient show-form" data-url={% url 'org_create' %}><i class="fa fa-plus"> </i> New Item</button></div>{% endblock %}
+   {% block content %}
+    <!-- box-body -->
+      <table class="table table-hover table-condensed" id="org-table" align="center">
+        <thead>
+          <tr class="bg-red-gradient">
+            <th>SN</th>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Action</th>
+          </tr>
+        </thead> 
+        <tbody class="bg-warning" id="org-table">
+        {% for item in item_list %} 
+          <tr>  
+            <td>{{ forloop.counter }}</td>
+            <td><a href=""><b>{{ item.item_name.upper }}</b></a></td>
+            <td>{{ item.item_desc }}</td>
+            <td>{{ item.loc_id }}</td>
+            <td><button class="btn bg-blue-gradient waves-effect show-form-update" data-url=""><i class="fa fa-edit"></i> EDIT </button>  <button class="btn bg-red-gradient show-form-delete" data-url=""><i class="fa fa-trash"></i> DELETE </button> </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="text-center bg-warning" colspan="5">There is no organization in database</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  <!-- /.box-body -->
+</div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="modal-org">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-4 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>{{ total_orgs }}</h3>
+
+          <p>Organizations</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-network"></i>
+        </div>
+        <a href="{% url 'org-list' %}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3>{{ total_locations }}</h3>
+
+          <p>Locations</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-location"></i>
+        </div>
+        <a href="{% url 'location_all' %}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>{{ total_items }}</h3>
+
+          <p>Items</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+  <!-- /.row -->
+  <!-- Main row -->
+    <section>
+      <div class="row">
+          <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="box">
+            <div class="inner">
+              <h4 class="box-title page-header">Recently Added</h4>
+              <div class="box-body">
+              <table class="">
+                <tr>
+                  <td><b>ORGANIZATIONS</b></td>
+                  <td><b>ITEMS</b></td>
+                </tr>
+                <tr>
+                  <td width="200px">
+                    {% if recently_added_org %}
+                    {% for org in recently_added_org %}
+                      <a href="">{{ org.org_name }}</a><br>
+                    {% endfor %}
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if recently_added_item %}
+                    {% for item in recently_added_item %}
+                      <a href="">{{ item.item_name }}</a><br>
+                    {% endfor %}
+                    {% endif %}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xs-6">
+        <!-- small box -->
+        <div class="box ">
+          <div class="inner">
+            <h4 class="box-title">search</h4>
+            <div class="box-body">
+            <form method="GET">
+              <input type="text" id="search" name="search">
+            </form>
+            </div>
+            <ul id="search-result">
+
+            </ul>
+        </div>
+      </div>
+        
+      </div>
+    </section>
+  <!-- /.row (main row) -->
+{% endblock %}

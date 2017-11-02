@@ -1,0 +1,7 @@
+{% org.count > 0%}
+{% for organization in organizations %}
+	<li><a>{{ organization.org_name }}</a>
+{% endfor %}
+{% else %}
+	<li>none to show</li>
+{% endif %}

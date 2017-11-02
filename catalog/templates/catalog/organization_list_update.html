@@ -1,0 +1,21 @@
+{% block message %}
+	{% if message %}
+	<div class="alert alert-success alert-dismissable fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Success!</strong> {{ message }}.
+	</div>
+	{% endif %}
+{% endblock %}
+{% for org in object_list %} 
+<tr>  
+  <td>{{ forloop.counter }}</td>
+  <td><a href="{% url 'org_loc_list' org.id %}">{{ org.org_name.capitalize }}</a></td>
+  <td><a href="{{ organization.website }}">{{ org.website}}</a></td>
+  <td>{{ org.address.capitalize }}</td>
+  <td><button class="btn btn-primary waves-effect show-form-update" data-url="{% url 'org_update' org.id %}"><i class="fa fa-edit"></i> EDIT </button>  <button class="btn btn-danger show-form-delete" data-url="{% url 'org_delete' org.id %}"><i class="fa fa-trash"></i> DELETE </button> </td>
+</tr>
+{% empty %}
+  <tr>
+    <td class="text-center bg-warning" colspan="5">There is no organization in database</td>
+  </tr>
+{% endfor %}

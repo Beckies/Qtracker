@@ -1,0 +1,17 @@
+{% for location in location_list %} 
+<tr>  
+  <td>{{ forloop.counter }}</td>
+  <td><a href="{% url 'loc_item' location.id %}">{{ location.loc_name.capitalize }}</a></td>
+  <td>{{ location.loc_desc}}</td>
+  {% if org_th %}
+  <td>{{ location.org_id }}</td>
+  {% else %}
+  <td>{{ item_count }}</td>
+  {% endif %}
+  <td><button class="btn btn-primary waves-effect loc-show-form-update" data-url="{% url 'loc_update' location.id %}"><i class="fa fa-edit"></i> EDIT </button>  <button class="btn btn-danger loc-show-form-delete" data-url="{% url 'loc_delete' location.id %}"><i class="fa fa-trash"></i> DELETE </button> </td>
+</tr>
+{% empty %}
+  <tr>
+    <td class="text-center bg-warning" colspan="5">There is no organization in database</td>
+  </tr>
+{% endfor %}
